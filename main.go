@@ -11,7 +11,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v5"
-	//	"github.com/teris-io/shortid"
 )
 
 type Task struct {
@@ -43,9 +42,6 @@ func CreateTask(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	// Generate an ID for the task (for simplicity, we use a timestamp).
-
-	//id, err := shortid.Generate()
 	initDB()
 	err := conn.QueryRow(context.Background(), `
         INSERT INTO tasks (title, description, due_date)
@@ -56,9 +52,6 @@ func CreateTask(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to generate task ID"})
 		return
 	}
-	//task.ID = id
-
-	//tasks[task.ID] = task
 	c.JSON(http.StatusCreated, task)
 	fmt.Println(c.Request.Body)
 	log.Println(task)
@@ -106,16 +99,8 @@ func GetTask(c *gin.Context) {
 }
 func main() {
 	r := gin.Default()
-
-	/*r.GET("/ping", func(c *gin.Context) {
-	    c.JSON(200, gin.H{
-	        "message": "pong",
-	    })
-	})*/
 	r.POST("/tasks", CreateTask)
 	r.GET("/tasks", GetAllTasks)
 	r.GET("/tasks/:id", GetTask)
-	/*  r.PUT("/tasks/:id", UpdateTask)
-	r.DELETE("/tasks/:id", DeleteTask)*/
-	r.Run() // By default it serves on :8080
+	r.Run() // serves on :8080
 }

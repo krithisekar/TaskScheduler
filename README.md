@@ -27,13 +27,16 @@ The Task struct represents the structure of a task with the following fields:
 **POST /tasks**: Creates a new task.
 **GET /tasks**: Retrieves all tasks.
 **GET /tasks/:id**: Retrieves a task by its ID.
+
 **Installation and Setup**
+
 **Clone the repository:**
 
 sh
 Copy code
 git clone <repository-url>
 cd TaskScheduler
+
 **Install dependencies:**
 Make sure you have Go and PostgreSQL installed on your machine.
 
@@ -43,12 +46,14 @@ Create a PostgreSQL database and update the connection string in the initDB func
 go
 Copy code
 connectionString := "postgresql://<username>:<password>@localhost:<port>/<database>"
+
 **Run the application:**
 
 sh
 Copy code
 go run main.go
 Usage
+
 **Create a new task:**
 Send a POST request to http://localhost:8080/tasks with the task details in the request body.
 

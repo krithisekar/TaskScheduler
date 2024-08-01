@@ -68,6 +68,6 @@ The application logs important events and errors to help with debugging and moni
 
 **Contribution**
 Feel free to fork this repository, make your changes, and create a pull request. Contributions are welcome!
-**
-License**
+
+**License**
 This project is licensed under the MIT License. See the LICENSE file for details.
